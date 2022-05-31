@@ -16,7 +16,8 @@ public class JavaApplication1 {
      */
    public static void main(String[] args) throws IOException {
        Tablero tablero= new Tablero();
-       tablero.setTablero();
+       //System.out.println(tablero.getMatrix().toString());
+//tablero.setTablero();
       
     }
     
