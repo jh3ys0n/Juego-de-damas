@@ -188,4 +188,20 @@ public class Tablero{
         lista2.set(j,"0");
         matrix.set(i,lista2);
     }
+    
+    /*-->POR EL MOMENTO LUEGO EL JUGADORNEGRO TENDRA ESTA FUNCION
+    public ArrayList<Integer> escogerPosicion(ArrayList<ArrayList<Integer>> matrixLista){
+        ArrayList<Integer> lista = matrixLista.get(0);
+        return lista;
+    }
+
+    public void moverPieza(int i, int j){
+        int a;int b;
+        ArrayList<ArrayList<Integer>> mataux = posicionesIr(i, j);
+        ArrayList<Integer> lista = escogerPosicion(mataux);
+        a=lista.get(0);
+        b=lista.get(1);
+        actualizarTablero(a, b, i, j);
+    }
+    */
 }
