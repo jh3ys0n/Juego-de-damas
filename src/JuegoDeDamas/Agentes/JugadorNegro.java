@@ -5,7 +5,7 @@
 package JuegoDeDamas.Agentes;
 
 import jade.core.Agent;
-
+import JuegoDeDamas.Juego.Tablero;
 /**
  *
  * @author Asus
@@ -17,4 +17,6 @@ public class JugadorNegro extends Agent{
     public void setup(){
         System.out.println("Hola mundo");
     }
+    
+    
 }

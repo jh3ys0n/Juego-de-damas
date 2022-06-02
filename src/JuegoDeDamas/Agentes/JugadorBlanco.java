@@ -13,7 +13,7 @@ import jade.core.Agent;
 public class JugadorBlanco extends Agent{
    
      public static void main(String[] args) {
-       
+         
     }
     @Override
     public void setup(){
