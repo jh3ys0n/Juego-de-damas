@@ -14,10 +14,16 @@ public class Tablero{
     public Tablero(){
         ArrayList<String>fila1=new ArrayList<String>();
         fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");
-
+        
+        ArrayList<String> fila3=new ArrayList<String>();
+        fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");
+        
         ArrayList<String>fila2=new ArrayList<String>();
         fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");
-
+        
+        ArrayList<String>fila4=new ArrayList<String>();
+        fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");
+        
         ArrayList<String>filaCP=new ArrayList<String>();
         filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");
 
@@ -34,8 +40,8 @@ public class Tablero{
         matrix.add(filaCP2);
         matrix.add(fila1);
         matrix.add(fila2);
-        matrix.add(fila1);
-        matrix.add(fila2);
+        matrix.add(fila3);
+        matrix.add(fila4);
         matrix.add(filaCPN);
         matrix.add(filaCPN2);
 
@@ -128,4 +134,58 @@ public class Tablero{
           frame.setVisible(true);
           
         }
+    
+    
+    public ArrayList<ArrayList<Integer>> posicionesIr(int i,int j){
+        ArrayList<ArrayList<Integer>> listaFinal=new ArrayList<ArrayList<Integer>>();   
+        if(estaRango(i,j)){
+            if(estaRango(i-1,j-1)){
+                if(librePos(matrix,i-1,j-1)){
+                    ArrayList<Integer> listaAux = new ArrayList<Integer>();
+                    listaAux.add(i-1);
+                    listaAux.add(j-1);
+                    listaFinal.add(listaAux);
+                }
+            }
+            if(estaRango(i-1,j+1)){
+                if(librePos(matrix,i-1,j+1)){
+                    ArrayList<Integer> listaAux = new ArrayList<Integer>();
+                    listaAux.add(i-1);
+                    listaAux.add(j+1);
+                    listaFinal.add(listaAux);
+                }
+            }
+        }
+        return listaFinal;
+    }
+    
+
+    public boolean estaRango(int i, int j){
+        boolean esVerdad=false;
+        if(i>=0 && i<=7 && j>=0 && j<=7){
+            esVerdad=true;
+        }else{
+            esVerdad=false;
+        }
+        return esVerdad;
+    }
+
+    public boolean librePos(ArrayList<ArrayList<String>> matrix,int i,int j ){
+        boolean esVerdad=false;
+        if(matrix.get(i).get(j).compareTo("0")==0){
+            esVerdad=true;
+        }else{
+            esVerdad=false;
+        }
+        return esVerdad;
+    }
+
+    public void actualizarTablero(int a,int b, int i, int j){
+        ArrayList<String> lista = matrix.get(a);
+        lista.set(b,"N");
+        matrix.set(a,lista);
+        ArrayList<String> lista2 = matrix.get(i);
+        lista2.set(j,"0");
+        matrix.set(i,lista2);
+    }
 }
