@@ -113,9 +113,9 @@ public class Tablero extends JPanel{
         return matrix;    
     }
     
-    public void setLista(ArrayList<ArrayList<String>> matrix) {	
+    public void upDateTable(ArrayList<ArrayList<String>> matrix) {	
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             this.matrix = matrix;         
             repaint();
         } catch (InterruptedException e) {

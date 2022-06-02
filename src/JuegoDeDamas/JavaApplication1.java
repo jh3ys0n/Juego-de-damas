@@ -26,9 +26,10 @@ public class JavaApplication1 {
         frame.pack();
         frame.setVisible(true);
        
+       
+        //************** METODO PARA ACTUALIZAR EL TABLERO ****************
         
-        
-       // tablero.setLista(matrix2);
+                        //tablero.upDateTable(matrix2);
         
     }
     
@@ -66,7 +67,7 @@ public class JavaApplication1 {
         matrix.add(fila2);
        
         
-       tablero.setLista(matrix);
+       tablero.upDateTable(matrix);
        
        
         ArrayList<ArrayList<String>> matrix2=new ArrayList<ArrayList<String>>();
@@ -79,8 +80,8 @@ public class JavaApplication1 {
         matrix2.add(fila1);
         matrix2.add(fila2);
         
-        tablero.setLista(matrix2);
-       // tablero.setLista(matrix);
+        tablero.upDateTable(matrix2);
+       // tablero.upDateTable(matrix);
        //System.out.println(tablero.getMatrix().toString());
       
 
