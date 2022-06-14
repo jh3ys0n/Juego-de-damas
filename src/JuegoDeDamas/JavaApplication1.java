@@ -5,6 +5,7 @@
 package JuegoDeDamas;
 
 import JuegoDeDamas.Agentes.JugadorBlanco;
+import JuegoDeDamas.Agentes.JugadorNegro;
 import JuegoDeDamas.Juego.Tablero;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,41 +28,65 @@ public class JavaApplication1 {
         frame.pack();
         frame.setVisible(true);
        
-        ArrayList<ArrayList<String>> matrix=new ArrayList<ArrayList<String>>();
-    
-        ArrayList<String>fila1=new ArrayList<String>();
-        fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");
-
-        ArrayList<String>fila2=new ArrayList<String>();
-        fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");
-
+        ArrayList<ArrayList<String>> matrix;
+        matrix = new ArrayList<ArrayList<String>>();
         ArrayList<String>filaCP=new ArrayList<String>();
         filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");
 
         ArrayList<String>filaCP2=new ArrayList<String>();
         filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");
 
+        ArrayList<String> fila1=new ArrayList<String>();
+        fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("N");fila1.add("1");
+
+        ArrayList<String>fila2=new ArrayList<String>();
+        fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");
+
+        ArrayList<String> fila3=new ArrayList<String>();
+        fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");
+
+        ArrayList<String>fila4=new ArrayList<String>();
+        fila4.add("1");fila4.add("B");fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");
+
         ArrayList<String>filaCPN=new ArrayList<String>();
-        filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");
+        filaCPN.add("0");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");
 
         ArrayList<String>filaCPN2=new ArrayList<String>();
         filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");
 
         matrix.add(filaCP);
+        matrix.add(filaCP2);
+        matrix.add(fila1);
+        matrix.add(fila2);
+        matrix.add(fila3);
+        matrix.add(fila4);
+        matrix.add(filaCPN);
         matrix.add(filaCPN2);
-        matrix.add(fila1);
-        matrix.add(fila2);
-        matrix.add(fila1);
-        matrix.add(fila2);
-        matrix.add(fila1);
-        matrix.add(fila2);
-       
-        
+      
        tablero.upDateTable(matrix);
        
-       JugadorBlanco blanco=new JugadorBlanco();
+      JugadorBlanco blanco=new JugadorBlanco();
+       JugadorNegro negro=new JugadorNegro();
        
-    
+      // System.out.println(blanco.fichasLibres(matrix).toString());
+       //System.out.println(blanco.posicionesIr(matrix,1,5).toString());
+      // tablero.
+      for(int i=0;i<20;i++){
+           tablero.upDateTable(blanco.minimax(tablero.getMatrix()));
+       
+            tablero.upDateTable(negro.minimax(tablero.getMatrix()));
+        }
+     
+     // blanco.comer(matrix, 0, 4, 2, 2);
+     // tablero.upDateTable(matrix);
+       
+      //tablero.upDateTable(matrix);
+      //negro.posPiezasAcomer(matrix, 3, 1);
+      // negro.comer(matrix, 3, 1, 1, 3);
+       
+      // tablero.upDateTable(matrix);
+       //negro.comer(matrix, 3, 5, 1, 3);
+       
        // tablero.upDateTable(blanco.comer(matrix, 0, 2, 2, 0));
        //blanco.comerPieza(matrix, 0, 2);
        

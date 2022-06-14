@@ -30,20 +30,28 @@ public class Tablero extends JPanel{
     boolean black = true;
 
     public Tablero(){
-         ArrayList<String>fila1=new ArrayList<String>();
-        fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");
-
-        ArrayList<String>fila2=new ArrayList<String>();
-        fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");
-
+           ArrayList<ArrayList<String>> matrix;
+        matrix = new ArrayList<ArrayList<String>>();
         ArrayList<String>filaCP=new ArrayList<String>();
         filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");filaCP.add("B");filaCP.add("1");
 
         ArrayList<String>filaCP2=new ArrayList<String>();
         filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");
 
+        ArrayList<String> fila1=new ArrayList<String>();
+        fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("N");fila1.add("1");
+
+        ArrayList<String>fila2=new ArrayList<String>();
+        fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");
+
+        ArrayList<String> fila3=new ArrayList<String>();
+        fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");
+
+        ArrayList<String>fila4=new ArrayList<String>();
+        fila4.add("1");fila4.add("B");fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");
+
         ArrayList<String>filaCPN=new ArrayList<String>();
-        filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");
+        filaCPN.add("0");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");
 
         ArrayList<String>filaCPN2=new ArrayList<String>();
         filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");
@@ -52,8 +60,8 @@ public class Tablero extends JPanel{
         matrix.add(filaCP2);
         matrix.add(fila1);
         matrix.add(fila2);
-        matrix.add(fila1);
-        matrix.add(fila2);
+        matrix.add(fila3);
+        matrix.add(fila4);
         matrix.add(filaCPN);
         matrix.add(filaCPN2);
     
@@ -65,21 +73,43 @@ public class Tablero extends JPanel{
         for(int y= 0;y<matrix.size();y++){
             for(int x= 0;x<matrix.get(y).size();x++){
                 if(matrix.get(y).get(x).compareTo("1")==0){
-                    g.setColor(new Color(235,235, 208));
+                    g.setColor(Color.decode("#7e6b56"));
+                    g.fillRect(x*64, y*64, 64, 64);
+                   
                 }else{
-                if(matrix.get(y).get(x).compareTo("0")==0){
-                    g.setColor(new Color(119, 148, 85));
-                }else{
-                if(matrix.get(y).get(x).compareTo("B")==0){
-                    g.setColor(new Color(19, 18, 85));          
-                }else{
-                if(matrix.get(y).get(x).compareTo("N")==0){
-                    g.setColor(new Color(255, 18, 85));
-                    }
+                    if(matrix.get(y).get(x).compareTo("0")==0){
+                        g.setColor(Color.decode("#fffff1"));
+                        g.fillRect(x*64, y*64, 64, 64);
+                        }else{
+                        if(matrix.get(y).get(x).compareTo("B")==0){
+                            g.setColor(Color.decode("#d7bb89"));
+                            //g.fillRect(x*64, y*64, 64, 64);
+                            g.fillOval(x*64, y*64, 60, 60);
+                            }else{
+                            if(matrix.get(y).get(x).compareTo("DB")==0){
+                               g.setColor(Color.decode("#fffdc9"));
+                                //g.fillRect(x*64, y*64, 64, 64);
+                                g.fillOval(x*64, y*64, 60, 60);
+                                }else{    
+                                if(matrix.get(y).get(x).compareTo("N")==0){
+                                    g.setColor(Color.decode("#463623"));
+                                    //g.fillRect(x*64, y*64, 64, 64);
+                                    g.fillOval(x*64, y*64, 60, 60);
+                                    }
+                                else{
+                                    if(matrix.get(y).get(x).compareTo("DN")==0){
+                                    g.setColor(Color.decode("#301500"));
+                                    //g.fillRect(x*64, y*64, 64, 64);
+                                    g.fillOval(x*64, y*64, 60, 60);
+                                    }
+                                }      
+                
+                            }
+                         }
+                     }
                 }
-                }
-                }
-                g.fillRect(x*64, y*64, 64, 64);
+                
+                //
                 white=!white;
                 }
                 white=!white;
