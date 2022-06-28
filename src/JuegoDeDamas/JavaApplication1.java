@@ -37,7 +37,7 @@ public class JavaApplication1 {
         filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");filaCP2.add("1");filaCP2.add("B");
 
         ArrayList<String> fila1=new ArrayList<String>();
-        fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("0");fila1.add("1");fila1.add("N");fila1.add("1");
+        fila1.add("B");fila1.add("1");fila1.add("B");fila1.add("1");fila1.add("B");fila1.add("1");fila1.add("B");fila1.add("1");
 
         ArrayList<String>fila2=new ArrayList<String>();
         fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");fila2.add("1");fila2.add("0");
@@ -46,10 +46,10 @@ public class JavaApplication1 {
         fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");fila3.add("0");fila3.add("1");
 
         ArrayList<String>fila4=new ArrayList<String>();
-        fila4.add("1");fila4.add("B");fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");fila4.add("1");fila4.add("0");
+        fila4.add("1");fila4.add("N");fila4.add("1");fila4.add("N");fila4.add("1");fila4.add("N");fila4.add("1");fila4.add("N");
 
         ArrayList<String>filaCPN=new ArrayList<String>();
-        filaCPN.add("0");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");
+        filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");filaCPN.add("N");filaCPN.add("1");
 
         ArrayList<String>filaCPN2=new ArrayList<String>();
         filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");filaCPN2.add("1");filaCPN2.add("N");
@@ -71,11 +71,33 @@ public class JavaApplication1 {
       // System.out.println(blanco.fichasLibres(matrix).toString());
        //System.out.println(blanco.posicionesIr(matrix,1,5).toString());
       // tablero.
-      for(int i=0;i<20;i++){
+      /*for(int i=0;i<20;i++){
            tablero.upDateTable(blanco.minimax(tablero.getMatrix()));
        
             tablero.upDateTable(negro.minimax(tablero.getMatrix()));
-        }
+        }*/
+      boolean continuar=true;
+      boolean turnoN=false;
+      boolean turnoB=true;
+      while(continuar){
+          if(turnoB){
+            tablero.upDateTable(blanco.minimax(tablero.getMatrix()));
+            turnoB=false;
+            turnoN=true;
+            ArrayList<ArrayList<Integer>> cant=negro.fichasLibres(tablero.getMatrix());
+            if(cant.size()==0){
+                continuar=false;
+            }
+          }else if(turnoN){
+            tablero.upDateTable(negro.minimax(tablero.getMatrix()));
+            turnoB=true;
+            turnoN=false;
+            ArrayList<ArrayList<Integer>> cant=blanco.fichasLibres(tablero.getMatrix());
+            if(cant.size()==0){
+                continuar=false;
+            }     
+          }
+      }
      
      // blanco.comer(matrix, 0, 4, 2, 2);
      // tablero.upDateTable(matrix);
