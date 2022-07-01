@@ -87,7 +87,7 @@ public class Tablero extends JPanel{
                             g.fillOval(x*64, y*64, 60, 60);
                             }else{
                             if(matrix.get(y).get(x).compareTo("DB")==0){
-                               g.setColor(Color.decode("#c4ffff"));
+                               g.setColor(Color.RED);
                                 //g.fillRect(x*64, y*64, 64, 64);
                                 g.fillOval(x*64, y*64, 60, 60);
                                 }else{    
