@@ -87,7 +87,7 @@ public class Tablero extends JPanel{
                             g.fillOval(x*64, y*64, 60, 60);
                             }else{
                             if(matrix.get(y).get(x).compareTo("DB")==0){
-                               g.setColor(Color.decode("#fffdc9"));
+                               g.setColor(Color.decode("#c4ffff"));
                                 //g.fillRect(x*64, y*64, 64, 64);
                                 g.fillOval(x*64, y*64, 60, 60);
                                 }else{    
@@ -98,7 +98,7 @@ public class Tablero extends JPanel{
                                     }
                                 else{
                                     if(matrix.get(y).get(x).compareTo("DN")==0){
-                                    g.setColor(Color.decode("#301500"));
+                                    g.setColor(Color.decode("#003077"));
                                     //g.fillRect(x*64, y*64, 64, 64);
                                     g.fillOval(x*64, y*64, 60, 60);
                                     }

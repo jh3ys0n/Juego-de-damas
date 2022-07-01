@@ -264,46 +264,46 @@ public class JugadorBlanco{
     public ArrayList<ArrayList<String>> comerPieza(ArrayList<ArrayList<String>> matrixE, int x,int y, int a, int b){
         ArrayList<ArrayList<String>> matrix= matrixE;
         String ficha=obtenerFicha(matrix,x,y);
-        if(x-a==2 && y-b== 2){
+        if(x-a==-2 && y-b== 2){
             ArrayList<String> lista1=matrix.get(x);lista1.set(y,"0");
             matrix.set(x,lista1);
-            ArrayList<String> lista2=matrix.get(x-1);lista2.set(y-1,"0");
-            matrix.set(x-1,lista2);
-            if(a==0){
-                ArrayList<String> lista3=matrix.get(a);lista3.set(b,"DN");
+            ArrayList<String> lista2=matrix.get(x+1);lista2.set(y-1,"0");
+            matrix.set(x+1,lista2);
+            if(a==7){
+                ArrayList<String> lista3=matrix.get(a);lista3.set(b,"DB");
                 matrix.set(a,lista3);
             }else{
-                ArrayList<String> lista3=matrix.get(a);lista3.set(b,ficha);
+                ArrayList<String> lista3=matrix.get(a);lista3.set(b,"B");
                 matrix.set(a,lista3);
             }
         }else{
-            if(x-a==2 && y-b==-2){
+            if(x-a==-2 && y-b==-2){
                 ArrayList<String> lista1=matrix.get(x);lista1.set(y,"0");
                 matrix.set(x,lista1);
-                ArrayList<String> lista2=matrix.get(x-1);lista2.set(y+1,"0");
-                matrix.set(x-1,lista2);
-                if(a==0){
-                    ArrayList<String> lista3=matrix.get(a);lista3.set(b,"DN");
+                ArrayList<String> lista2=matrix.get(x+1);lista2.set(y+1,"0");
+                matrix.set(x+1,lista2);
+                if(a==7){
+                    ArrayList<String> lista3=matrix.get(a);lista3.set(b,"DB");
                     matrix.set(a,lista3);
                 }else{
-                    ArrayList<String> lista3=matrix.get(a);lista3.set(b,ficha);
+                    ArrayList<String> lista3=matrix.get(a);lista3.set(b,"B");
                     matrix.set(a,lista3);
                 }
             }else{ 
-                if(x-a== -2 && y-b== 2){
+                if(x-a== 2 && y-b== 2){
                     ArrayList<String> lista1=matrix.get(x);lista1.set(y,"0");
                     matrix.set(x,lista1);
-                    ArrayList<String> lista2=matrix.get(x+1);lista2.set(y-1,"0");
-                    matrix.set(x+1,lista2);
-                    ArrayList<String> lista3=matrix.get(a);lista3.set(b,ficha);
+                    ArrayList<String> lista2=matrix.get(x-1);lista2.set(y-1,"0");
+                    matrix.set(x-1,lista2);
+                    ArrayList<String> lista3=matrix.get(a);lista3.set(b,"B");
                     matrix.set(a,lista3);
                 }else{ 
-                    if(x-a== -2 && y-b== -2){
+                    if(x-a== 2 && y-b== -2){
                         ArrayList<String> lista1=matrix.get(x);lista1.set(y,"0");
                         matrix.set(x,lista1);
-                        ArrayList<String> lista2=matrix.get(x+1);lista2.set(y+1,"0");
-                        matrix.set(x+1,lista2);
-                        ArrayList<String> lista3=matrix.get(a);lista3.set(b,ficha);
+                        ArrayList<String> lista2=matrix.get(x-1);lista2.set(y+1,"0");
+                        matrix.set(x-1,lista2);
+                        ArrayList<String> lista3=matrix.get(a);lista3.set(b,"B");
                         matrix.set(a,lista3);
                     }
                 }
