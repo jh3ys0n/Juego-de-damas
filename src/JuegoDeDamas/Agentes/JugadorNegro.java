@@ -153,6 +153,54 @@ public class JugadorNegro{
         System.out.println("---> Puntaje Final Max: " + bandera);
         return res;
     }
+    public ArrayList<ArrayList<String>> minimaxG2(ArrayList<ArrayList<String>> matrix){
+        int bandera = -1000;
+        ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<Integer>> listaIni = fichasLibres(matrix);
+        for(int i=0; i<listaIni.size();i++){
+            ArrayList<Integer> posicion = listaIni.get(i);
+            int x=posicion.get(0);int y=posicion.get(1);
+            ArrayList<ArrayList<Integer>> listaPosFinal = posicionesIr(matrix,x,y);
+            for(int j=0;j<listaPosFinal.size();j++){
+                ArrayList<Integer> posicionDes = listaPosFinal.get(j);
+                int a= posicionDes.get(0);int b=posicionDes.get(1);
+                if(x-a==1 || a-x==1 ){
+                    ArrayList<ArrayList<String>> aux= new ArrayList<ArrayList<String>>();
+                    for(int k=0;k<matrix.size();k++){
+                        ArrayList fila=(ArrayList<String>)matrix.get(k).clone();
+                        aux.add(fila);
+                    }
+                    ArrayList<ArrayList<String>> matrixAux=moverPieza(aux,x,y,a,b);
+                    ArrayList<ArrayList<String>> matrixMax=simularRespuestaG2(matrixAux);//Jugador Blanco
+                    int puntaje=obtenerPuntaje(matrixMax);
+                    imprimirMatrix(matrixMax);
+                    System.out.println("---> Puntaje Max: " + puntaje);
+                    if(puntaje > bandera){
+                        res=matrixAux;
+                        bandera=puntaje;
+                    }
+                }else if(x-a==2 || a-x==2){
+                    ArrayList<ArrayList<String>> aux= new ArrayList<ArrayList<String>>();
+                    for(int m=0;m<matrix.size();m++){
+                        ArrayList fila=(ArrayList<String>)matrix.get(m).clone();
+                        aux.add(fila);
+                    }       
+                    ArrayList<ArrayList<String>> matrixAux=comerPieza(aux,x,y,a,b);
+                    ArrayList<ArrayList<String>> matrixMax=simularRespuestaG2(matrixAux);
+                    int puntaje=obtenerPuntaje(matrixMax);
+                    imprimirMatrix(matrixMax);
+                    System.out.println("---> Puntaje: Max " + puntaje);
+                    if(puntaje > bandera){
+                        res=matrixAux;
+                        bandera=puntaje;
+                    }
+                }
+            }
+        }
+        imprimirMatrix(res);
+        System.out.println("---> Puntaje Final Max: " + bandera);
+        return res;
+    }
 
     public ArrayList<ArrayList<Integer>> fichasLibres(ArrayList<ArrayList<String>> matrix){
         ArrayList<ArrayList<Integer>> listaFinal = new ArrayList<ArrayList<Integer>> ();
@@ -319,10 +367,18 @@ public class JugadorNegro{
             ArrayList<String> lista=matrix.get(i);
             for(int j=0;j<lista.size();j++){
                 if(lista.get(j)=="N" || lista.get(j)=="DN"){
-                    puntaje=puntaje+1;
+                    if(lista.get(j)=="DN"){
+                        puntaje=puntaje+2;
+                    }else{
+                        puntaje=puntaje+1;
+                    }
                 }else{
                     if(lista.get(j)=="B" || lista.get(j)=="DB"){
-                        puntaje=puntaje-1;
+                        if(lista.get(j)=="DB"){
+                            puntaje=puntaje-2;
+                        }else{
+                            puntaje=puntaje-1;
+                        }
                     }
                 }            
             }
@@ -332,6 +388,48 @@ public class JugadorNegro{
 
     /*SIMULACION DE JUGADAS ENEMIGAS*/
     public ArrayList<ArrayList<String>> simularRespuesta(ArrayList<ArrayList<String>> matrix){
+        int bandera = 1000;
+        ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<Integer>> listaIni = fichasLibresBlancas(matrix);
+        for(int i=0; i<listaIni.size();i++){
+            ArrayList<Integer> posicion = listaIni.get(i);
+            int x=posicion.get(0);int y=posicion.get(1);
+            ArrayList<ArrayList<Integer>> listaPosFinal = posicionesIrBlancas(matrix,x,y);
+            for(int j=0;j<listaPosFinal.size();j++){
+                ArrayList<Integer> posicionDes = listaPosFinal.get(j);
+                int a= posicionDes.get(0);int b=posicionDes.get(1);
+                if(x-a==1 || a-x==1 ){
+                    ArrayList<ArrayList<String>> aux= new ArrayList<ArrayList<String>>();
+                    for(int k=0;k<matrix.size();k++){
+                        ArrayList fila=(ArrayList<String>)matrix.get(k).clone();
+                        aux.add(fila);
+                    }
+                    ArrayList<ArrayList<String>> matrixAux =moverPiezaBlanca(aux,x,y,a,b);
+                    ArrayList<ArrayList<String>> matrixMin = minimaxG2(matrixAux);
+                    int puntaje=obtenerPuntaje(matrixMin);
+                    if(puntaje < bandera){
+                        res=matrixMin;
+                        bandera=puntaje;
+                    }
+                }else if(x-a==2 || a-x==2){
+                    ArrayList<ArrayList<String>> aux= new ArrayList<ArrayList<String>>();
+                    for(int m=0;m<matrix.size();m++){
+                        ArrayList fila=(ArrayList<String>)matrix.get(m).clone();
+                        aux.add(fila);
+                    }       
+                    ArrayList<ArrayList<String>> matrixAux=comerPiezaBlanca(aux,x,y,a,b);
+                    ArrayList<ArrayList<String>> matrixMin = minimaxG2(matrixAux);
+                    int puntaje=obtenerPuntaje(matrixMin);
+                    if(puntaje < bandera){
+                        res=matrixMin;
+                        bandera=puntaje;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    public ArrayList<ArrayList<String>> simularRespuestaG2(ArrayList<ArrayList<String>> matrix){
         int bandera = 1000;
         ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
         ArrayList<ArrayList<Integer>> listaIni = fichasLibresBlancas(matrix);
