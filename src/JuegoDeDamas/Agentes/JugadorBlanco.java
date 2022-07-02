@@ -478,28 +478,6 @@ public class JugadorBlanco{
     public ArrayList<ArrayList<Integer>> posicionesIrNegras(ArrayList<ArrayList<String>> matrix,int i,int j){
         ArrayList<ArrayList<Integer>> listaFinal = new ArrayList<ArrayList<Integer>> ();
         if(obtenerFicha(matrix,i,j).compareTo("N")==0 || obtenerFicha(matrix,i,j).compareTo("DN")==0){
-            if(estaRango(i-1,j+1)){
-                if(obtenerFicha(matrix,i-1,j+1).compareTo("B")==0 || obtenerFicha(matrix,i-1,j+1).compareTo("DB")==0){
-                    if(estaRango(i-2,j+2) && librePos(matrix,i-2,j+2)){
-                        ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                        listaAux.add(i-2);listaAux.add(j+2);listaFinal.add(listaAux);
-                    }
-                }else if(librePos(matrix,i-1,j+1)){
-                    ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                    listaAux.add(i-1);listaAux.add(j+1);listaFinal.add(listaAux);
-                }
-            }
-            if(estaRango(i-1,j-1)){
-                if(obtenerFicha(matrix,i-1,j-1).compareTo("B")==0 || obtenerFicha(matrix,i-1,j-1).compareTo("DB")==0){
-                    if(estaRango(i-2,j-2) && librePos(matrix,i-2,j-2)){
-                        ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                        listaAux.add(i-2);listaAux.add(j-2);listaFinal.add(listaAux);
-                    }
-                }else if(librePos(matrix,i-1,j-1)){
-                    ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                    listaAux.add(i-1);listaAux.add(j-1);listaFinal.add(listaAux);
-                }
-            }
             if(obtenerFicha(matrix,i,j).compareTo("DN")==0){
                 if(estaRango(i+1,j+1)){
                     if(obtenerFicha(matrix,i+1,j+1).compareTo("B")==0 || obtenerFicha(matrix,i+1,j+1).compareTo("DB")==0){
@@ -524,6 +502,28 @@ public class JugadorBlanco{
                     }
                 }
             }
+            if(estaRango(i-1,j+1)){
+                if(obtenerFicha(matrix,i-1,j+1).compareTo("B")==0 || obtenerFicha(matrix,i-1,j+1).compareTo("DB")==0){
+                    if(estaRango(i-2,j+2) && librePos(matrix,i-2,j+2)){
+                        ArrayList<Integer> listaAux = new ArrayList<Integer> ();
+                        listaAux.add(i-2);listaAux.add(j+2);listaFinal.add(listaAux);
+                    }
+                }else if(librePos(matrix,i-1,j+1)){
+                    ArrayList<Integer> listaAux = new ArrayList<Integer> ();
+                    listaAux.add(i-1);listaAux.add(j+1);listaFinal.add(listaAux);
+                }
+            }
+            if(estaRango(i-1,j-1)){
+                if(obtenerFicha(matrix,i-1,j-1).compareTo("B")==0 || obtenerFicha(matrix,i-1,j-1).compareTo("DB")==0){
+                    if(estaRango(i-2,j-2) && librePos(matrix,i-2,j-2)){
+                        ArrayList<Integer> listaAux = new ArrayList<Integer> ();
+                        listaAux.add(i-2);listaAux.add(j-2);listaFinal.add(listaAux);
+                    }
+                }else if(librePos(matrix,i-1,j-1)){
+                    ArrayList<Integer> listaAux = new ArrayList<Integer> ();
+                    listaAux.add(i-1);listaAux.add(j-1);listaFinal.add(listaAux);
+                }
+            }            
         }
         return listaFinal;
     }
