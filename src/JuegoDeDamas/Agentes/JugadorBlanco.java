@@ -231,7 +231,7 @@ public class JugadorBlanco{
                     if(obtenerFicha(matrix,i-1,j+1).compareTo("N")==0 || obtenerFicha(matrix,i-1,j+1).compareTo("DN")==0){
                         if(estaRango(i-2,j+2) && librePos(matrix,i-2,j+2)){
                             ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                            listaAux.add(i-2);listaAux.add(j+2);listaFinal.add(listaAux);
+                            listaAux.add(i-2);listaAux.add(j+2);listaFinal.add(0,listaAux);
                         }
                     }else if(librePos(matrix,i-1,j+1)){
                         ArrayList<Integer> listaAux = new ArrayList<Integer> ();
@@ -242,7 +242,7 @@ public class JugadorBlanco{
                     if(obtenerFicha(matrix,i-1,j-1).compareTo("N")==0 || obtenerFicha(matrix,i-1,j-1).compareTo("DN")==0){
                         if(estaRango(i-2,j-2) && librePos(matrix,i-2,j-2)){
                             ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                            listaAux.add(i-2);listaAux.add(j-2);listaFinal.add(listaAux);
+                            listaAux.add(i-2);listaAux.add(j-2);listaFinal.add(0,listaAux);
                         }
                     }else if(librePos(matrix,i-1,j-1)){
                         ArrayList<Integer> listaAux = new ArrayList<Integer> ();
@@ -254,7 +254,7 @@ public class JugadorBlanco{
                 if(obtenerFicha(matrix,i+1,j+1).compareTo("N")==0 || obtenerFicha(matrix,i+1,j+1).compareTo("DN")==0){
                     if(estaRango(i+2,j+2) && librePos(matrix,i+2,j+2)){
                         ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                        listaAux.add(i+2);listaAux.add(j+2);listaFinal.add(listaAux);
+                        listaAux.add(i+2);listaAux.add(j+2);listaFinal.add(0,listaAux);
                     }
                 }else if(librePos(matrix,i+1,j+1)){
                     ArrayList<Integer> listaAux = new ArrayList<Integer> ();
@@ -265,7 +265,7 @@ public class JugadorBlanco{
                 if(obtenerFicha(matrix,i+1,j-1).compareTo("N")==0 || obtenerFicha(matrix,i+1,j-1).compareTo("DN")==0){
                     if(estaRango(i+2,j-2) && librePos(matrix,i+2,j-2)){
                         ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                        listaAux.add(i+2);listaAux.add(j-2);listaFinal.add(listaAux);
+                        listaAux.add(i+2);listaAux.add(j-2);listaFinal.add(0,listaAux);
                     }
                 }else if(librePos(matrix,i+1,j-1)){
                     ArrayList<Integer> listaAux = new ArrayList<Integer> ();
@@ -483,7 +483,7 @@ public class JugadorBlanco{
                     if(obtenerFicha(matrix,i+1,j+1).compareTo("B")==0 || obtenerFicha(matrix,i+1,j+1).compareTo("DB")==0){
                         if(estaRango(i+2,j+2) && librePos(matrix,i+2,j+2)){
                             ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                            listaAux.add(i+2);listaAux.add(j+2);listaFinal.add(listaAux);
+                            listaAux.add(i+2);listaAux.add(j+2);listaFinal.add(0,listaAux);
                         }
                     }else if(librePos(matrix,i+1,j+1)){
                         ArrayList<Integer> listaAux = new ArrayList<Integer> ();
@@ -494,7 +494,7 @@ public class JugadorBlanco{
                     if(obtenerFicha(matrix,i+1,j-1).compareTo("B")==0 || obtenerFicha(matrix,i+1,j-1).compareTo("DB")==0){
                         if(estaRango(i+2,j-2) && librePos(matrix,i+2,j-2)){
                             ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                            listaAux.add(i+2);listaAux.add(j-2);listaFinal.add(listaAux);
+                            listaAux.add(i+2);listaAux.add(j-2);listaFinal.add(0,listaAux);
                         }
                     }else if(librePos(matrix,i+1,j-1)){
                         ArrayList<Integer> listaAux = new ArrayList<Integer> ();
@@ -506,7 +506,7 @@ public class JugadorBlanco{
                 if(obtenerFicha(matrix,i-1,j+1).compareTo("B")==0 || obtenerFicha(matrix,i-1,j+1).compareTo("DB")==0){
                     if(estaRango(i-2,j+2) && librePos(matrix,i-2,j+2)){
                         ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                        listaAux.add(i-2);listaAux.add(j+2);listaFinal.add(listaAux);
+                        listaAux.add(i-2);listaAux.add(j+2);listaFinal.add(0,listaAux);
                     }
                 }else if(librePos(matrix,i-1,j+1)){
                     ArrayList<Integer> listaAux = new ArrayList<Integer> ();
@@ -517,7 +517,7 @@ public class JugadorBlanco{
                 if(obtenerFicha(matrix,i-1,j-1).compareTo("B")==0 || obtenerFicha(matrix,i-1,j-1).compareTo("DB")==0){
                     if(estaRango(i-2,j-2) && librePos(matrix,i-2,j-2)){
                         ArrayList<Integer> listaAux = new ArrayList<Integer> ();
-                        listaAux.add(i-2);listaAux.add(j-2);listaFinal.add(listaAux);
+                        listaAux.add(i-2);listaAux.add(j-2);listaFinal.add(0,listaAux);
                     }
                 }else if(librePos(matrix,i-1,j-1)){
                     ArrayList<Integer> listaAux = new ArrayList<Integer> ();

@@ -79,7 +79,8 @@ public class JavaApplication1 {
       boolean continuar=true;
       boolean turnoN=false;
       boolean turnoB=true;
-      while(continuar){
+      int i=0;
+      while(continuar && i<=95){
           if(turnoB){
             tablero.upDateTable(blanco.minimax(tablero.getMatrix()));
             turnoB=false;
@@ -97,6 +98,7 @@ public class JavaApplication1 {
                 continuar=false;
             }     
           }
+          i++;
       }
      
      // blanco.comer(matrix, 0, 4, 2, 2);
