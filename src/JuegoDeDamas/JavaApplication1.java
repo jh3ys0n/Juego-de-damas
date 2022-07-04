@@ -10,6 +10,7 @@ import JuegoDeDamas.Juego.Tablero;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class JavaApplication1 {
 
@@ -87,6 +88,7 @@ public class JavaApplication1 {
             ArrayList<ArrayList<Integer>> cant=negro.fichasLibres(tablero.getMatrix());
             if(cant.size()==0){
                 continuar=false;
+                JOptionPane.showMessageDialog(null, "GANAN LAS NEGRAS");
             }
           }else if(turnoN){
             tablero.upDateTable(negro.minimax(tablero.getMatrix()));
@@ -95,6 +97,7 @@ public class JavaApplication1 {
             ArrayList<ArrayList<Integer>> cant=blanco.fichasLibres(tablero.getMatrix());
             if(cant.size()==0){
                 continuar=false;
+                JOptionPane.showMessageDialog(null, "GANAN LAS BLANCAS");
             }     
           }
       }
